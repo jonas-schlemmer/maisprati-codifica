@@ -1,1 +1,10 @@
-node_modules
+# Ignore all node_modules folders anywhere
+**/node_modules/
+
+# Ignore VS Code temporary files
+**/.vscode/
+**/tempCodeRunnerFile.js
+
+# Ignore operating system files
+**/.DS_Store
+**/Thumbs.db
