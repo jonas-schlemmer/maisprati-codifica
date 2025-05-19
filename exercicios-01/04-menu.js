@@ -23,7 +23,8 @@ do {
             goalsGre++
             break
         case 3:
-            return console.log(`\n\nINT ${goalsInt} X ${goalsGre} GRE\n`)                   
+            console.log(`\n\nINT ${goalsInt} X ${goalsGre} GRE\n`)   
+            break                
         default:
             console.log('\n[ERRO] Opção inválida')
     }
