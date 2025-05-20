@@ -2,7 +2,7 @@
 const prompt = require('prompt-sync')()
 let soma = 0
 
-for (let i = 0; i < 5; i++) {
+for (let i = 1; i <= 5; i++) {
     const numero = Number(prompt(`Digite o ${i}º número: `))
 
     if (isNaN(numero)) {
