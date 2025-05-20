@@ -1,12 +1,11 @@
 // 8. Escreva um algoritmo para ler 2 valores (considere que não serão lidos valores iguais) e escreve-los em ordem crescente.
 const prompt = require('prompt-sync')()
 const number1 = Number(prompt('Digite um número: '))
+let number2
 
 if (isNaN(number1)) {
     console.log('[ERRO] Digite somente números')
 } else {
-    let number2
-
     do {
         number2 = Number(prompt('Digite um segundo número (diferente do primeiro): '))
 
