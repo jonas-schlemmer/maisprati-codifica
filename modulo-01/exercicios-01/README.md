@@ -14,7 +14,7 @@ Este repositório contém os exercícios referentes às operações fundamentais
     git clone https://github.com/jonas-schlemmer/maisprati-codifica
     ```
     ```bash
-    cd modulo-01/exercicios-01
+    cd maisprati-codifica/modulo-01/exercicios-01
     ```
 
 2. Instale as dependências:
