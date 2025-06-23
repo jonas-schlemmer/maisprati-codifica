@@ -1,19 +1,19 @@
 // 1. Crie a função ehDataValida(dia, mes, ano) que retorne true se os valores formarem uma data real (meses de 28–31 dias, ano bissexto para fevereiro) e false caso contrário.
 function ehDataValida(dia, mes, ano) {
-  
-  if (mes < 1 || mes > 12) return false
-  if (ano < 1) return false
 
-  const diasPorMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if (mes < 1 || mes > 12) return false
+    if (ano < 1) return false
 
-  // Verifica ano bissexto e ajusta fevereiro
-  const ehBissexto = (ano % 4 === 0 && ano % 100 !== 0) || (ano % 400 === 0)
-  if (ehBissexto && mes === 2) {
-    return dia >= 1 && dia <= 29
-  }
+    const diasPorMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-  // Verifica se o dia está no intervalo válido do mês
-  return dia >= 1 && dia <= diasPorMes[mes - 1]
+    // Verifica ano bissexto e ajusta fevereiro
+    const ehBissexto = (ano % 4 === 0 && ano % 100 !== 0) || (ano % 400 === 0)
+    if (ehBissexto && mes === 2) {
+        return dia >= 1 && dia <= 29
+    }
+
+    // Verifica se o dia está no intervalo válido do mês
+    return dia >= 1 && dia <= diasPorMes[mes - 1]
 }
 
 console.log(ehDataValida(29, 2, 2024)) // true (bissexto)
