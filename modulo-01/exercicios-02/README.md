@@ -1,6 +1,6 @@
-# Módulo 1 - Exercícios 1
+# Módulo 1 - Exercícios 2
 
-Este repositório contém os exercícios referentes às operações fundamentais, estruturas de controle condicional e estruturas de repetição.
+Este repositório contém os exercícios referentes às operações fundamentais, estruturas de controle, vetores, funções e recursão.
 
 ## Requisitos
 
@@ -14,7 +14,7 @@ Este repositório contém os exercícios referentes às operações fundamentais
     git clone https://github.com/jonas-schlemmer/maisprati-codifica
     ```
     ```bash
-    cd maisprati-codifica/modulo-01/exercicios-01
+    cd maisprati-codifica/modulo-01/exercicios-02
     ```
 
 2. Instale as dependências:
@@ -33,5 +33,5 @@ Você pode executar qualquer exercício individualmente usando o Node.js.
 Por exemplo:
 
 ```bash
-node "01-parImpar.js"
+node "01-dataValida.js"
 ```
