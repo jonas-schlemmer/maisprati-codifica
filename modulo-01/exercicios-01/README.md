@@ -3,7 +3,7 @@
 Este repositório contém os exercícios referentes às operações fundamentais, estruturas de controle condicional e estruturas de repetição.
 
 ## Requisitos
-
+-   [Git](https://git-scm.com/downloads) instalado no computador
 -   [Node.js](https://nodejs.org/) instalado no computador
 
 ## Instalação
