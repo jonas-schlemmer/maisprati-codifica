@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hambúrguer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2em;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background-color: #444;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: 200px;
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            nav.aberto {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Meu Site</div>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <nav id="menu">
+            <a href="#">Início</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <section style="padding: 20px;">
+            <h1>Bem-vindo</h1>
+            <p>Este é um exemplo de menu hambúrguer que aparece apenas em telas menores que 600px.</p>
+        </section>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('aberto');
+        }
+    </script>
+
+</body>
+</html>
