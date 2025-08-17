@@ -1,36 +1,3 @@
-// let num1 = 9, num2 = 3
-// console.log(num1 + num2)
-// console.log(num1 - num2)
-// console.log(num1 * num2)
-// console.log(num1 / num2)
-
-//////
-
-// let counter = 1
-// counter+= 2
-// console.log(counter)
-
-// 60 <= 60 ? console.log("SIM") : console.log("NÃO")
-
-//////
-
-// Exercício 1: Verificar se um número é par ou ímpar
-// let numeroParImpar = 3
-// numeroParImpar % 2 === 0 ? console.log("Par") : console.log("Ímpar") 
-
-// Exercício 2: Encontrar o maior entre três números
-// let num1 = 6, num2 = 5, num3 = 7, maiorNumero
-
-// if ((num1 >= num2) && (num1 >= num3)) {
-//     maiorNumero = num1
-// } else if ((num2 >= num1) && (num2 >= num3)) {
-//     maiorNumero = num2
-// } else {
-//     maiorNumero = num3
-// }
-
-// console.log(`O número ${maiorNumero} é o maior!`)
-
 // Exercício 3: Faça uma calculadora simples utilizando a entrada do usuário
 const prompt = require('prompt-sync')()
 
@@ -55,26 +22,6 @@ let resultado = 0
 // } else {
 //     console.log("Operação Inválida!")
 //     resultado = undefined
-// }
-
-// if (resultado !== undefined) {
-//     console.log("Resultado: ", resultado)
-// }
-
-//////
-
-// let opcao = 'opcao1'
-
-// switch(opcao) {
-//     case 'opcao1':
-//         console.log('Você selecionou a primeira opção');
-//         break
-//     case 2:
-//         console.log('Você selecionou a segunda opção');
-//         break
-//     default:
-//         console.log('Você não escolheu nenhuma opção válida!');
-//         break
 // }
 
 switch(op) {
@@ -121,4 +68,3 @@ if (valor < 0) {
 // Exercício 4: Definir faixas etárias para crianças, adultos e adolescentes com switch e apresentar na tela se a pessoa que informou a idade está em uma e qual a faixa etária
 
 // 0 - 11 crianca / 12 - 19 adolescente / 20+ adulto
-
