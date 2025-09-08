@@ -1,23 +1,23 @@
-// let nome = 'Julio César'
-// console.log(nome.charAt(0))
-// console.log(nome.indexOf('C'));
-// console.log(nome.replace('Julio', 'Cleyton'));
-// console.log(nome.substr(6, 5));
-// console.log(nome.toUpperCase);
-// console.log(nome.toLowerCase);
-// console.log('   Wesley'.trim());
+let nome = 'Julio César'
+console.log(nome.charAt(0))
+console.log(nome.indexOf('C'))
+console.log(nome.replace('Julio', 'Cleyton'))
+console.log(nome.substr(6, 5))
+console.log(nome.toUpperCase())
+console.log(nome.toLowerCase())
+console.log('-  Wesley'.trim())
 
 // Fazer uma função que inverta uma string.
-// function inverteString(str) {
-//     // let virado = ''
-//     // for (let i = str.length -1; i >= 0; i--) {
-//     //     virado += str[i]
-//     // }
-//     // return virado
-//     return str.split('').reverse().join('')
-// }
+function inverteString(str) {
+    // let virado = ''
+    // for (let i = str.length -1; i >= 0; i--) {
+    //     virado += str[i]
+    // }
+    // return virado
+    return str.split('').reverse().join('')
+}
 
-// console.log(inverteString('Olá Mundo!'))
+console.log(inverteString('Olá Mundo!'))
 
 // Encontrar o número de vogais em uma string
 
