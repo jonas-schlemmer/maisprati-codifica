@@ -6,7 +6,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Par ou Ímpar\n 2 - Idade\n 3 - xxx\n 4 - xxx\n 5 - xxx\n 6 - xxx\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n11 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Par ou Ímpar\n 2 - Idade\n 3 - Nota\n 4 - IMC\n 5 - Maçãs\n 6 - Ordem crescente\n 7 - Contagem regressiva\n 8 - Repetir número\n 9 - Soma de 5 números\n10 - Tabuada\n11 - Média aritmética\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
 
     option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -107,13 +107,32 @@ function ex2() {
     }, 3000)
 }
 // =========================
-// 3. Implemente um programa que recebe uma nota de 0 a 10 e classifica como "Aprovado", "Recuperação", ou "Reprovado" utilizando if-else if.
+// 3. Implemente um programa que recebe uma nota de 0 a 10 que classifique como "Aprovado", "Recuperação", ou "Reprovado" utilizando if-else if.
 // =========================
 function ex3() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+
+    let grade = Number(prompt(`Digite uma nota: `))
+
+    if ((grade < 0) || (grade > 10) || (isNaN(grade))) {
+        console.log(`\n============================================\n [ERRO] Digite somente números entre 0 e 10\n============================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex3()
+        }, 3000)
+    }
+
+    if (grade >= 7) {
+        console.log(`\nNota ${grade} - Aprovado!`)
+    } else if ((grade >= 5) && (grade <= 6.9)) {
+        console.log(`\nNota ${grade} - Recuperação`)
+    } else {
+        console.log(`\nNota ${grade} - Reprovado...`)
+    }
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -122,9 +141,32 @@ function ex3() {
 // =========================
 function ex4() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+
+    let altura = Number(prompt(`Digite uma altura em metros: `).replace(',','.'))
+    let peso = Number(prompt(`Digite um peso: `))
+    const IMC = (peso / (altura * altura))
+    
+    if ((altura <= 0) || (peso <= 0) || (isNaN(altura)) || (isNaN(peso))) {
+        console.log(`\n=========================================\n [ERRO] Digite somente números positivos \n=========================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex4()
+        }, 3000)
+    } else {
+        if (IMC >= 30) {
+            console.log(`\nIMC: ${IMC.toFixed(2)} - Obesidade`)
+        } else if (IMC >= 25) {
+            console.log(`\nIMC: ${IMC.toFixed(2)} - Sobrepeso`)
+        } else if (IMC >= 18.5) {
+            console.log(`\nIMC: ${IMC.toFixed(2)} - Peso normal`)
+        } else {
+            console.log(`\nIMC: ${IMC.toFixed(2)} - Baixo peso`)
+        }
+    }
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
