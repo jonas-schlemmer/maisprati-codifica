@@ -7,7 +7,7 @@ function main() {
 
     // Exibe o menu de opções
     console.log(` 1 - Par ou Ímpar\n 2 - Idade\n 3 - Nota\n 4 - IMC\n 5 - Maçãs\n 6 - Ordem crescente\n 7 - Contagem regressiva\n 8 - Repetir número\n 9 - Soma de 5 números\n10 - Tabuada\n11 - Média aritmética\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
-
+    
     option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
         case 1: ex1()
@@ -175,9 +175,28 @@ function ex4() {
 // =========================
 function ex5() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    let applePrice = 0.3
+    let discount = 0.05
+    let amount = Number(prompt(`Digite a quantidade de maçãs: `))
+
+    if ((!Number.isInteger(amount)) || amount <= 0) {
+        console.log(`\n====================================================\n [ERRO] Digite somente números inteiros e positivos \n====================================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex5()
+        }, 3000)
+    }
+
+    if (amount >= 12) {
+        console.log(`\n${amount} maçãs - Total: R$ ${((amount * (applePrice - discount)).toFixed(2)).replace('.',',')}`)
+    } else {
+        console.log(`\n${amount} maçãs - Total: R$ ${((amount * applePrice).toFixed(2)).replace('.',',')}`)
+    }
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -186,9 +205,35 @@ function ex5() {
 // =========================
 function ex6() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    let number1 = Number(prompt(`Digite um número: `))
+    let number2 = Number(prompt(`Digite outro número diferente do anterior: `))
+
+    if (Number.isNaN(number1) || Number.isNaN(number2)) {
+        console.log(`\n===============================\n [ERRO] Digite somente números \n===============================`)
+        return setTimeout(() => {
+            console.clear()
+            ex6()
+        }, 3000)
+    }
+
+    if (number1 === number2) {
+        console.log(`\n==================================\n [ERRO] Digite números diferentes \n==================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex6()
+        }, 3000)
+    } else {
+        if (number1 > number2) {
+            console.log(`\nValores: ${number2} e ${number1}`)
+        } else {
+            console.log(`\nValores: ${number1} e ${number2}`)
+        }
+    }
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -197,9 +242,12 @@ function ex6() {
 // =========================
 function ex7() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -208,9 +256,12 @@ function ex7() {
 // =========================
 function ex8() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -219,9 +270,12 @@ function ex8() {
 // =========================
 function ex9() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -230,9 +284,12 @@ function ex9() {
 // =========================
 function ex10() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
@@ -241,9 +298,12 @@ function ex10() {
 // =========================
 function ex11() {
     console.clear()
-    console.log("IN DEV")
-    console.log("Voltando pro menu...")
+    
+    
+
+    console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
+        console.clear()
         main()
     }, 3000)
 }
