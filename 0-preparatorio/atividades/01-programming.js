@@ -82,7 +82,7 @@ function ex2() {
 
     let age = Number(prompt(`Digite uma idade: `))
 
-    if ((!Number.isInteger(age)) || age < 0) {
+    if ((!Number.isInteger(age)) || (age < 0)) {
         console.log(`\n====================================================\n [ERRO] Digite somente números inteiros e positivos \n====================================================`)
         return setTimeout(() => {
             console.clear()
@@ -243,7 +243,9 @@ function ex6() {
 function ex7() {
     console.clear()
     
-    
+    for (let i = 10; i >= 1; i--) {
+        console.log(i)
+    }
 
     console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
@@ -257,7 +259,21 @@ function ex7() {
 function ex8() {
     console.clear()
     
+    let number = Number(prompt(`Digite um número inteiro: `))
+    let counter = 1
     
+    if (Number.isNaN(number) || (!Number.isInteger(number))) {
+        console.log(`\n========================================\n [ERRO] Digite somente números inteiros \n========================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex8()
+        }, 3000)
+    }
+
+    do {
+        console.log(number)
+        counter++
+    } while (counter <= 10)
 
     console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
@@ -271,7 +287,23 @@ function ex8() {
 function ex9() {
     console.clear()
     
-    
+    let total = 0
+    let value = 0
+
+    for (let i = 1; i <= 5; i++) {
+        value = Number(prompt(`Digite o ${i}º número: `))
+        if (Number.isNaN(value)) {
+            console.log(`\n===============================\n [ERRO] Digite somente números \n===============================`)
+            return setTimeout(() => {
+                console.clear()
+                ex9()
+            }, 3000)
+        } else {
+            total += value
+        }
+    }
+
+    console.log(`\nTotal: ${total}`)
 
     console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
@@ -285,7 +317,20 @@ function ex9() {
 function ex10() {
     console.clear()
     
-    
+    const number = Number(prompt(`Digite um número de 1 a 10 para ver sua tabuada: `))
+
+    if ((!Number.isInteger(number)) || (number < 1) || (number > 10)) {
+        console.log(`\n=========================================================\n [ERRO] Digite somente números inteiros, positivos e de 1 a 10 \n============================================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex10()
+        }, 3000)
+    } else {
+        console.log(``)
+        for (let i = 1; i <= 10; i++) {
+            console.log(`${number} X ${i} = ${number * i}`)
+        }
+    }
 
     console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
@@ -299,7 +344,32 @@ function ex10() {
 function ex11() {
     console.clear()
     
-    
+    let total = 0
+    let amount = 0
+    let number = undefined
+
+    do {
+        number = Number(prompt(`Digite um número decimal: `))
+
+        if (number == 0) return console.log(`Média: ${(total / amount).toFixed(2)}`)
+
+        if (Number.isInteger(number)) {
+            console.log(`\n========================================\n [ERRO] Digite somente números decimais \n========================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex11()
+            }, 3000)
+        } else {
+            total += number
+            amount++
+        }
+
+    } while (number != 0)
+
+    /* BUGS:
+    NaN quando 0 no primeiro input
+    4.0 retorna erro
+    */
 
     console.log(`\n====================\n [VOLTANDO AO MENU] \n====================`)
     setTimeout(() => {
