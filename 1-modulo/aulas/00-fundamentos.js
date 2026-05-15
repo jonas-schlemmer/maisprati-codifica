@@ -1,123 +1,86 @@
-
 // ============================================================
-// BLOCO 7 — NULLISH COALESCING ?? (valor padrão seguro)
-// ============================================================
-// O operador ?? foi introduzido no ES2020 (ES11).
-// Ele retorna o lado direito APENAS se o lado esquerdo for null ou undefined.
-// É muito usado para definir valores padrão de forma segura.
-
-let nomeVisitante = null;      // imagine que veio de um banco de dados vazio
-let nomeExibido2 = nomeVisitante ?? "Visitante";
-console.log(nomeExibido2);     // "Visitante" — pois nomeVisitante era null
-
-let outroNome = "Ana";
-let outroExibido = outroNome ?? "Visitante";
-console.log(outroExibido);     // "Ana" — não era null/undefined, então usa o original
-
-// Diferença crucial entre ?? e ||:
-// || retorna o lado direito se o esquerdo for qualquer valor "falsy"
-//    (false, 0, "", NaN, null, undefined)
-// ?? retorna o lado direito SOMENTE para null ou undefined
-
-let quantidade = 0;  // zero é um valor válido (ex: quantidade de itens no carrinho)
-console.log(quantidade || 10);  // 10 — porque 0 é falsy, || substituiu por 10 (indesejado!)
-console.log(quantidade ?? 10);  // 0  — 0 não é null nem undefined, ?? mantém o 0 (correto!)
-
-// Encadeamento opcional com ?. (optional chaining — ES2020):
-// Permite acessar propriedades de objetos que podem ser null ou undefined
-// sem causar erro. Funciona bem junto com ??.
-let perfil = null;
-console.log(perfil?.nome);           // undefined — não lança erro
-console.log(perfil?.nome ?? "Anônimo"); // "Anônimo" — combina ?. com ??
-
-
-// ============================================================
-// BLOCO 8 — TRUTHY e FALSY (valores que se comportam como boolean)
-// ============================================================
-// No JS, qualquer valor pode ser usado numa condição, mesmo sem ser true/false.
-// Isso acontece porque o JS faz uma coerção implícita para boolean ao avaliar
-// a condição de um if. Esse processo se chama "conversão para boolean".
-
-// Você pode ver o valor boolean de qualquer coisa com Boolean() ou !!:
-console.log(Boolean(0));          // false
-console.log(Boolean(""));         // false
-console.log(Boolean(null));       // false
-console.log(Boolean(undefined));  // false
-console.log(Boolean(NaN));        // false
-console.log(Boolean(false));      // false
-// ↑ Esses 6 são os únicos valores FALSY do JS. Todo o resto é TRUTHY.
-
-console.log(Boolean(1));          // true
-console.log(Boolean("texto"));    // true
-console.log(Boolean([]));         // true  ← array vazio é TRUTHY!
-console.log(Boolean({}));         // true  ← objeto vazio é TRUTHY!
-console.log(Boolean(-1));         // true  ← número negativo é TRUTHY!
-
-// O !! (dupla negação) é um atalho comum para converter para boolean:
-console.log(!!0);        // false
-console.log(!!"texto");  // true
-// É equivalente a Boolean(), mas mais curto de escrever.
-
-// Uso prático — verificar string vazia:
-let texto = "";
-if (texto) {
-    console.log("A string tem conteúdo.");
-} else {
-    console.log("A string está vazia.");  // ← cai aqui, pois "" é falsy
-}
-
-// ARMADILHA clássica — array vazio é truthy:
-let lista = [];
-if (lista) {
-    console.log("O array existe (mesmo vazio, [] é truthy!)");  // ← cai aqui!
-}
-// Para verificar se um array está realmente vazio, use .length:
-if (lista.length === 0) {
-    console.log("O array está vazio de verdade.");  // ← agora sim
-}
-
-// Uso prático — verificar se o usuário preencheu um campo:
-let campoBusca = "JavaScript";
-if (campoBusca) {
-    console.log("Buscando por:", campoBusca);  // executa porque a string tem conteúdo
-} else {
-    console.log("Digite algo para buscar.");
-}
-
-
-// ============================================================
-// BLOCO 9 — EXEMPLOS PRÁTICOS DO DIA A DIA
+//   FUNDAMENTOS DE JAVASCRIPT
 // ============================================================
 
-// --- Verificar disponibilidade de cor ---
-// Array.includes() retorna true ou false — perfeito para usar em condicionais.
-const coresDisponiveis = ["vermelho", "verde", "azul"];
-let corEscolhida = "amarelo";
-if (coresDisponiveis.includes(corEscolhida)) {
-    console.log(`${corEscolhida} disponível! ✅`);
-} else {
-    console.log(`${corEscolhida} indisponível. ❌`);
-}
+// JavaScript é uma linguagem de programação criada em 1995
+// por Brendan Eich enquanto trabalhava na Netscape. A história
+// conta que ele a criou em apenas 10 dias. O objetivo inicial era simples:
+// adicionar interatividade às páginas web, que na época eram estáticas (só HTML).
 
-// ?? (nullish)   → valor padrão seguro: só substitui null ou undefined
-// ?.             → optional chaining: acesso seguro a propriedades que podem ser null
-// Truthy / Falsy → 6 valores falsy; todo o resto é truthy; use !! ou Boolean() para ver
+// ECMAScript é a especificação que define as regras da linguagem. Pense assim:
+// ECMAScript = a receita, o manual de regras
+// JavaScript = o prato pronto, a implementação dessa receita
 
-// Só funciona no navegador
+// A confusão existe porque o JavaScript cresceu tão rápido que precisou de um
+// órgão oficial para padronizá-lo. Em 1997, a organização ECMA International
+// assumiu essa responsabilidade e publicou a primeira versão oficial da
+// especificação, chamando-a de ECMAScript. Na prática, os dois nomes se referem
+// à mesma coisa. Quando alguém fala "ES6" ou "ES2015", está falando de uma versão
+// do ECMAScript — e portanto do JavaScript.
 
+// ============================================================
+// BLOCO 1 — EXIBINDO MENSAGENS (console.log)
+// ============================================================
+// console.log() é como um "falar em voz alta" para o computador.
+// Tudo que você colocar dentro dos parênteses aparece no terminal.
+
+// Tecnicamente, console é um objeto global disponível tanto no navegador
+// quanto no Node.js, e log() é um de seus métodos. Outros métodos úteis:
 // console.warn()  → exibe aviso em amarelo
 // console.error() → exibe erro em vermelho
 // console.table() → exibe dados em formato de tabela
 
 console.log("Olá, mundo!");        // texto com aspas duplas
-console.warn("Olá, mundo!");        // texto com aspas duplas
-console.error('Olá de novo!');       // aspas simples também funcionam
-console.table(`E eu uso crases!`);   // crases são chamadas de "template literals"
+console.log('Olá de novo!');       // aspas simples também funcionam
+console.log(`E eu uso crases!`);   // crases são chamadas de "template literals"
+// Lembrando: se quiser expor aspas dentro de um texto, as internas
+// não podem ser iguais às externas. Ex: "Ele disse 'olá'" funciona.
 
+// Você pode exibir mais de uma coisa de uma vez, separando por vírgulas:
+console.log("Meu nome é", "Ana", "e tenho", 25, "anos");
+// Resultado: Meu nome é Ana e tenho 25 anos
+
+// Por que isso é útil?
+// Enquanto você programa, usa console.log para "ver" o que está acontecendo.
+// É como acender a luz num quarto escuro para ver o que tem lá dentro.
+
+// ============================================================
+// BLOCO 2 — TIPOS DE DADOS (o que o JS entende)
+// ============================================================
+// Assim como no mundo real temos diferentes tipos de coisas
+// (números, palavras, verdade/mentira), no JS também.
+
+// O JavaScript possui dois grupos de tipos de dados:
+// → Primitivos: string, number, boolean, null, undefined, symbol, bigint
+// → Objetos: arrays, funções, datas, etc. (veremos em módulos futuros)
+// Por ora, foque nos primitivos abaixo.
+
+// STRING — texto entre aspas (simples, duplas ou crases)
+console.log("Olá");    // aspas duplas
+console.log('Mundo');  // aspas simples
+console.log(`JS`);     // crases (template literals)
+// Internamente, strings são sequências de caracteres Unicode.
+// Cada letra, espaço ou símbolo ocupa uma posição (índice), começando em 0.
+
+// NUMBER — números inteiros e decimais (o JS usa ponto, não vírgula!)
+console.log(42);     // número inteiro
+console.log(3.14);   // número com casas decimais
 // Tecnicamente, o JS usa o padrão IEEE 754 de dupla precisão (64 bits)
 // para representar todos os números. Por isso, há limites:
 console.log(Number.MAX_SAFE_INTEGER);  // 9007199254740991 — maior inteiro seguro
 console.log(Number.MIN_SAFE_INTEGER);  // -9007199254740991
+
+// BOOLEAN — verdadeiro ou falso (pense como uma lâmpada: acesa ou apagada)
+console.log(true);   // verdadeiro
+console.log(false);  // falso
+
+// NULL — ausência intencional de valor (você mesmo definiu que está vazio)
+console.log(null);
+
+// UNDEFINED — ausência não intencional (o JS não encontrou nenhum valor)
+console.log(undefined);
+// Diferença: null é como uma caixa vazia de propósito.
+//            undefined é uma caixa que nem foi criada ainda.
 
 // SYMBOL (ES6+) — identificador único e imutável, usado em casos avançados
 const id = Symbol("id");
@@ -130,14 +93,73 @@ const numeroGigante = 9007199254740992n;  // note o "n" no final
 console.log(numeroGigante + 1n);          // 9007199254740993n
 // BigInt e Number não podem ser misturados diretamente em operações.
 
+// Como descobrir o tipo de qualquer valor? Use typeof:
+console.log(typeof "Olá");      // "string"
+console.log(typeof 42);         // "number"
+console.log(typeof true);       // "boolean"
+console.log(typeof undefined);  // "undefined"
 console.log(typeof null);       // "object" ← bug histórico do JS (existe desde 1995!)
 console.log(typeof Symbol());   // "symbol"
 console.log(typeof 42n);        // "bigint"
+
+// ============================================================
+// BLOCO 3 — VARIÁVEIS (guardando valores na memória)
+// ============================================================
+// Uma variável é como uma caixinha com um nome escrito.
+// Você coloca um valor dentro dela e usa o nome para acessar depois.
+
+// LET — escopo de bloco, valor pode mudar (padrão moderno)
+let idade = 20;
+console.log(idade);  // 20
+idade = 21;          // reatribuição permitida
+console.log(idade);  // 21
+
+// CONST — escopo de bloco, valor não pode ser reatribuído (padrão moderno)
+const NOME = "Carlos";
+console.log(NOME);
+// NOME = "João";  // ← TypeError: Assignment to constant variable.
+// Atenção: const impede a reatribuição da variável, mas não "congela" objetos.
+// Ex: um array declarado com const ainda pode ter itens adicionados.
+
+// VAR — escopo de função (forma antiga, evite usar)
+// var tem comportamentos confusos como "hoisting" e escopo global acidental.
+// "Hoisting" significa que o JS move declarações var para o topo do escopo
+// em tempo de execução, o que pode causar bugs difíceis de encontrar.
+var cidade = "Porto Alegre";
+console.log(cidade);
 
 // Regras para nomear variáveis:
 // nomeCompleto    (camelCase — padrão no JS)
 // minhaIdade
 // VALOR_MAXIMO    (UPPER_SNAKE_CASE — convenção para constantes)
+// 1nome           (não pode começar com número)
+// meu nome        (não pode ter espaço)
+// if / for / let  (palavras reservadas do JS)
+
+let semValor;           // declarada, mas sem valor atribuído
+console.log(semValor);  // undefined
+semValor = "Agora tem!";
+console.log(semValor);  // "Agora tem!"
+
+// ============================================================
+// BLOCO 4 — OPERAÇÕES MATEMÁTICAS
+// ============================================================
+// O JS funciona como uma calculadora. Os operadores aritméticos
+// são aplicados sobre valores do tipo number.
+
+let a = 10;
+let b = 3;
+
+console.log(a + b);   // 13      — adição
+console.log(a - b);   // 7       — subtração
+console.log(a * b);   // 30      — multiplicação
+console.log(a / b);   // 3.333...— divisão (resultado pode ser decimal)
+console.log(a % b);   // 1       — módulo: RESTO da divisão inteira (10 ÷ 3 = 3, sobra 1)
+console.log(a ** b);  // 1000    — exponenciação: 10³ = 10 × 10 × 10
+
+// O operador % (módulo) é muito usado para saber se um número é par ou ímpar:
+console.log(10 % 2);  // 0 — par!   (resto zero = divisível por 2)
+console.log(7 % 2);   // 1 — ímpar! (resto diferente de zero)
 
 // Precedência de operadores (igual à matemática — regra PEMDAS):
 // 1° Parênteses ( )
@@ -154,7 +176,54 @@ console.log(5 + 3);     // 8    — dois numbers, soma normal
 // Com - * / o JS sempre converte para número:
 console.log("10" - 2);  // 8  — JS converte "10" para número automaticamente
 console.log("10" * 2);  // 20 — idem
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// ============================================================
+// BLOCO 5 — INCREMENTO E DECREMENTO (atalhos para somar/subtrair 1)
+// ============================================================
+// Em programação, é muito comum somar ou subtrair 1 de uma variável.
+// Ex: contar passos, tentativas, pontuação num jogo.
+
+let pontos = 0;
+
+pontos = pontos + 1;  // forma explícita
+console.log(pontos);  // 1
+
+pontos++;             // pós-incremento: usa o valor atual, depois soma 1
+console.log(pontos);  // 2
+
+++pontos;             // pré-incremento: soma 1 primeiro, depois usa o valor
+console.log(pontos);  // 3
+
+pontos--;             // pós-decremento
+console.log(pontos);  // 2
+
+// Diferença entre pós e pré-incremento dentro de uma expressão:
+let x = 5;
+console.log(x++);  // imprime 5 (valor atual), depois x vira 6
+console.log(x);    // 6
+
+let y = 5;
+console.log(++y);  // y vira 6 primeiro, depois imprime 6
+console.log(y);    // 6
+
+// Operadores de atribuição composta (atalhos para qualquer valor):
+let placar = 10;
+placar += 5;   // placar = placar + 5  →  15
+placar -= 3;   // placar = placar - 3  →  12
+placar *= 2;   // placar = placar * 2  →  24
+placar /= 4;   // placar = placar / 4  →  6
+placar **= 2;  // placar = placar ** 2 →  36 (ES2016+)
+placar %= 10;  // placar = placar % 10 →  6
+console.log(placar);  // 6
+
+// ============================================================
+// BLOCO 6 — CONVERSÃO DE TIPOS (coerção e casting)
+// ============================================================
+// O JS faz conversões de tipo de duas formas:
+// → Implícita (coerção): o JS converte sozinho, sem você pedir
+// → Explícita (casting): você converte manualmente com funções
+
 // TEXTO → NÚMERO (casting explícito)
 let textoNumero = "42";
 console.log(textoNumero + 8);          // "428" — coerção implícita: concatenou!
