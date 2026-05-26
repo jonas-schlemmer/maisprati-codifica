@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - PENDENTE\n 6 - PENDENTE\n 7 - PENDENTE\n 8 - PENDENTE\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - Desconto\n 6 - Caixa Eletrônico\n 7 - PENDENTE\n 8 - PENDENTE\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -179,6 +179,91 @@ function ex4() {
     }
  
     console.log(`\nMaior número: ${biggestNumber}`)
+
+    menu()
+}
+
+// =========================
+// 5. Uma loja oferece desconto progressivo conforme o valor da compra. Faça um programa que leia o valor total de uma compra e aplique as seguintes regras: compras abaixo de R$ 100,00 não têm desconto; compras entre R$ 100,00 e R$299,99 recebem 10% de desconto; compras entre R$ 300,00 e R$ 499,99 recebem 15% de desconto; compras acima de R$ 500,00 recebem 20% de desconto. Exiba o valor original, o desconto aplicado e o valor final a pagar.
+// =========================
+function ex5() {
+    console.clear()
+    
+    const TOTAL = Number(prompt('Digite o total da compra: R$ ').replace(',', '.'))
+    let discount = 0
+    
+    if (isNaN(TOTAL) || TOTAL <= 0) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex5()
+        }, 3000)
+    }
+
+    if (TOTAL >= 500) {
+        discount = 0.2
+    } else if (TOTAL >= 300) {
+        discount = 0.15
+    } else if (TOTAL >= 100) {
+        discount = 0.1
+    } else {
+        discount = 0
+    }
+ 
+    console.log(`\nValor Original: R$ ${TOTAL.toFixed(2)}\nDesconto: ${discount * 100}%\nTOTAL: R$ ${(TOTAL - (TOTAL * discount)).toFixed(2)}`)
+
+    menu()
+}
+
+// =========================
+// 6. Crie um programa de caixa eletrônico simplificado. O usuário informa o valor que deseja sacar (múltiplo de 10). O programa deve calcular e exibir a menor quantidade possível de cédulas de R$ 100, R$ 50, R$ 20 e R$ 10 necessárias para compor o saque.
+// =========================
+function ex6() {
+    console.clear()
+    
+    const VALUE = Number(prompt('Digite o valor que deseja sacar: R$ ').replace(',', '.'))
+    const NOTE_100 = 100
+    const NOTE_50 = 50
+    const NOTE_20 = 20
+    const NOTE_10 = 10
+    let remainingValue = VALUE
+
+    if (!Number.isInteger(VALUE) || VALUE <= 0 || VALUE % 10 !== 0) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex6()
+        }, 3000)
+    }
+
+    const amountNote100 = Math.floor(remainingValue / NOTE_100)
+    remainingValue %= NOTE_100
+
+    const amountNote50 = Math.floor(remainingValue / NOTE_50)
+    remainingValue %= NOTE_50
+
+    const amountNote20 = Math.floor(remainingValue / NOTE_20)
+    remainingValue %= NOTE_20
+
+    const amountNote10 = Math.floor(remainingValue / NOTE_10)
+
+    console.log(`\nValor do Saque: R$ ${VALUE}`)
+    
+    if (amountNote100 > 0) {
+        console.log(`${amountNote100} nota(s) de R$ 100`)
+    }
+
+    if (amountNote50 > 0) {
+        console.log(`${amountNote50} nota(s) de R$ 50`)
+    }
+
+    if (amountNote20 > 0) {
+        console.log(`${amountNote20} nota(s) de R$ 20`)
+    }
+
+    if (amountNote10 > 0) {
+        console.log(`${amountNote10} nota(s) de R$ 10`)
+    }
 
     menu()
 }
