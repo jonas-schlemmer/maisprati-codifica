@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Nota\n 2 - Idade\n 3 - PENDENTE\n 4 - PENDENTE\n 5 - PENDENTE\n 6 - PENDENTE\n 7 - PENDENTE\n 8 - PENDENTE\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - PENDENTE\n 6 - PENDENTE\n 7 - PENDENTE\n 8 - PENDENTE\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -119,6 +119,66 @@ function ex2() {
     } else {
         console.log(`\n${AGE} anos - ${status}`)
     }
+
+    menu()
+}
+
+// =========================
+// 3. Escreva um programa que pergunte o salário mensal de um funcionário e o percentual de aumento concedido pela empresa. Caso o salário seja menor que R$ 1.500,00, o percentual de aumento deve ser dobrado automaticamente. Exiba o novo salário do funcionário.
+// =========================
+function ex3() {
+    console.clear()
+    
+    let salary = Number(prompt(`Digite seu salário mensal: R$ `).replace(',','.'))
+    let increasePercentage = Number(prompt('Digite o percentual de aumento: ').replace(',','.'))
+
+    if (isNaN(salary) || isNaN(increasePercentage) || salary <= 0 || increasePercentage <= 0) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex3()
+        }, 3000)
+    }
+
+    if (salary < 1500) {
+        increasePercentage *= 2
+    }
+    
+    salary += salary * (increasePercentage / 100)
+    
+    console.log(`\nNovo salário: R$ ${salary.toFixed(2)}`)
+
+    menu()
+}
+
+// =========================
+// 4. Crie um programa que leia três números inteiros e exiba o maior deles, sem utilizar funções prontas como Math.max().
+// =========================
+function ex4() {
+    console.clear()
+    
+    const NUMBER_1 = Number(prompt('Digite um número inteiro: '))
+    const NUMBER_2 = Number(prompt('Digite outro número inteiro: '))
+    const NUMBER_3 = Number(prompt('Digite o último número inteiro: '))
+    let biggestNumber = NUMBER_1
+    
+    if (!Number.isInteger(NUMBER_1) || !Number.isInteger(NUMBER_2) || !Number.isInteger(NUMBER_3)) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex4()
+        }, 3000)
+    }
+
+    if (NUMBER_2 > biggestNumber) {
+        biggestNumber = NUMBER_2
+    }
+
+    if (NUMBER_3 > biggestNumber) {
+        biggestNumber = NUMBER_3
+    }
+ 
+    console.log(`\nMaior número: ${biggestNumber}`)
 
     menu()
 }
