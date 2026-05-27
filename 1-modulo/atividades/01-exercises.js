@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - Desconto\n 6 - Caixa Eletrônico\n 7 - Calculadora\n 8 - Pizza\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - Desconto\n 6 - Caixa Eletrônico\n 7 - Calculadora\n 8 - Pizza\n 9 - Mês\n10 - Estacionamento\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -373,5 +373,144 @@ function ex8() {
  
     console.log(`\nTamanho: ${PIZZA_SIZE}\nBorda: ${PIZZA_CRUST}\nTotal: R$ ${total.toFixed(2)}`)
 
+    menu()
+}
+
+// =========================
+// 9. Crie um programa que leia o número do mês (1 a 12) e, usando switch case, exiba o nome do mês correspondente e quantos dias ele possui. Para fevereiro, pergunte ao usuário se o ano é bissexto e ajuste a quantidade de dias para 29 caso seja.
+// =========================
+function ex9() {
+    console.clear()
+
+    const MONTH = Number(prompt('Digite o número do mês (1 a 12): '))
+    let monthName = ''
+    let days = 0
+
+    if (!Number.isInteger(MONTH) || MONTH < 1 || MONTH > 12) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex9()
+        }, 3000)
+    }
+
+    switch (MONTH) {
+        case 1:
+            monthName = 'Janeiro'
+            days = 31
+        break
+
+        case 2:
+            monthName = 'Fevereiro'
+
+            const LEAP_YEAR = prompt('O ano é bissexto? (S/N): ').toUpperCase()
+
+            if (LEAP_YEAR === 'S') {
+                days = 29
+            } else if (LEAP_YEAR === 'N') {
+                days = 28
+            } else {
+                console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+                return setTimeout(() => {
+                    console.clear()
+                    ex9()
+                }, 3000)
+            }
+        break
+
+        case 3:
+            monthName = 'Março'
+            days = 31
+        break
+
+        case 4:
+            monthName = 'Abril'
+            days = 30
+        break
+
+        case 5:
+            monthName = 'Maio'
+            days = 31
+        break
+
+        case 6:
+            monthName = 'Junho'
+            days = 30
+        break
+
+        case 7:
+            monthName = 'Julho'
+            days = 31
+        break
+
+        case 8:
+            monthName = 'Agosto'
+            days = 31
+        break
+
+        case 9:
+            monthName = 'Setembro'
+            days = 30
+        break
+
+        case 10:
+            monthName = 'Outubro'
+            days = 31
+        break
+
+        case 11:
+            monthName = 'Novembro'
+            days = 30
+        break
+
+        case 12:
+            monthName = 'Dezembro'
+            days = 31
+        break
+    }
+
+    console.log(`\nMês: ${monthName}\nDias: ${days}`)
+    
+    menu()
+}
+
+// =========================
+// 10. Um estacionamento cobra por faixas de tempo. Faça um programa que leia quantas horas um veículo ficou estacionado e, usando switch case com intervalos, calcule o valor a pagar conforme a tabela: 1a hora = R$ 8,00; 2a hora =R$ 6,00; 3a hora = R$ 4,00; acima de 3 horas = R$ 4,00 pelas primeiras 3 horas mais R$ 2,00 por hora adicional. Exiba o tempo total e o valor cobrado.
+// =========================
+function ex10() {
+    console.clear()
+
+    const HOURS = Number(prompt('Digite quantas horas o veículo ficou estacionado: '))
+    let total = 0
+    
+    if (!Number.isInteger(HOURS) || HOURS <= 0) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex10()
+        }, 3000)
+    }
+    
+    switch (HOURS) {
+        case 1:
+            total = 8
+        break
+
+        case 2:
+            total = 14
+        break
+
+        case 3:
+            total = 18
+        break
+
+        default:
+            const EXTRA_HOURS = HOURS - 3
+
+            total = 18 + (EXTRA_HOURS * 2)
+        break
+    }
+    console.log(`\nTempo: ${HOURS} hora(s)\nTotal: R$ ${total.toFixed(2)}`)
+    
     menu()
 }
