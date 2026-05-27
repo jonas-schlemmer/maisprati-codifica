@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - Desconto\n 6 - Caixa Eletrônico\n 7 - PENDENTE\n 8 - PENDENTE\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Nota\n 2 - Idade\n 3 - Salário\n 4 - Maior Número\n 5 - Desconto\n 6 - Caixa Eletrônico\n 7 - Calculadora\n 8 - Pizza\n 9 - PENDENTE\n10 - PENDENTE\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -264,6 +264,114 @@ function ex6() {
     if (amountNote10 > 0) {
         console.log(`${amountNote10} nota(s) de R$ 10`)
     }
+
+    menu()
+}
+
+// =========================
+// 7. Faça um programa que funcione como uma calculadora básica. Leia dois números e uma operação desejada (+, -, *, /). Usando switch case, realize a operação correspondente e exiba o resultado. Trate o caso de divisão por zero e de operação inválida.
+// =========================
+function ex7() {
+    console.clear()
+    
+    const VALUE_1 = Number(prompt('Digite o primeiro valor: '))
+    const OP = prompt('Digite a operação (+ - * /): ')
+    const VALUE_2 = Number(prompt('Digite o segundo valor: '))
+
+    if (isNaN(VALUE_1) || isNaN(VALUE_2)) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex7()
+        }, 3000)
+    }
+
+    switch (OP) {
+        case '+':
+            console.log(`\n${VALUE_1} + ${VALUE_2} = ${VALUE_1 + VALUE_2}`)
+        break
+
+        case '-':
+            console.log(`\n${VALUE_1} - ${VALUE_2} = ${VALUE_1 - VALUE_2}`)
+        break
+
+        case '*':
+            console.log(`\n${VALUE_1} * ${VALUE_2} = ${VALUE_1 * VALUE_2}`)
+        break
+
+        case '/':
+            if (VALUE_2 == 0) {
+                console.log(`\n=========================\n [ERRO] Divisão por zero \n=========================`)
+                return setTimeout(() => {
+                    console.clear()
+                    ex7()
+                }, 3000)
+            }
+            console.log(`\n${VALUE_1} / ${VALUE_2} = ${VALUE_1 / VALUE_2}`)
+        break
+
+        default:
+            console.log(`\n==================================\n [ERRO] Digite um operador válido \n==================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex7()
+            }, 3000)
+        break
+    }
+   
+    menu()
+}
+
+// =========================
+// 8. Uma pizzaria cobra por tamanho e tipo de borda. Faça um programa que leia o tamanho da pizza (P, M ou G) e o tipo de borda (tradicional ou recheada) usando switch case. Os preços base são: P = R$ 25,00, M = R$ 35,00, G = R$ 45,00. A borda recheada acrescenta R$ 8,00 em qualquer tamanho. Exiba o valor total do pedido.
+// =========================
+function ex8() {
+    console.clear()
+    
+    const PIZZA_SIZE = prompt('Digite o tamanho da pizza (P M G): ').toUpperCase()
+    const PIZZA_CRUST = prompt('Digite o tipo de borda (Tradicional ou Recheada): ').toUpperCase()
+    let total = 0
+    
+    switch (PIZZA_SIZE) {
+        case 'P':
+            total = 25
+        break
+
+        case 'M':
+            total = 35
+        break
+
+        case 'G':
+            total = 45
+        break
+
+        default:
+            console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex8()
+            }, 3000)
+        break
+    }
+
+    switch (PIZZA_CRUST) {
+        case 'TRADICIONAL':
+        break
+
+        case 'RECHEADA':
+            total += 8
+        break
+
+        default:
+            console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex8()
+            }, 3000)
+        break
+    }
+ 
+    console.log(`\nTamanho: ${PIZZA_SIZE}\nBorda: ${PIZZA_CRUST}\nTotal: R$ ${total.toFixed(2)}`)
 
     menu()
 }
