@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Tabuada\n 2 - Dígitos\n 3 - Fibonacci\n 4 - Senha\n 5 - xxx\n 6 - xxx\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Tabuada\n 2 - Dígitos\n 3 - Fibonacci\n 4 - Senha\n 5 - Números Primos\n 6 - Notas\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -153,7 +153,7 @@ function ex4() {
     
     console.clear()
 
-    let password = 'Inter1'
+    const PASSWORD = 'Inter1'
     let passwordInput
     let remainingAttempts = 3
     
@@ -165,7 +165,7 @@ function ex4() {
         } else {
             passwordInput = prompt(`Digite a senha: `)
 
-            if (password !== passwordInput) {
+            if (PASSWORD !== passwordInput) {
                 --remainingAttempts
                 console.clear()
                 console.log(`\nSenha inválida\nTentativas restantes: ${remainingAttempts}\n`)
@@ -175,5 +175,94 @@ function ex4() {
                 return menu()
             }
         }
-    } while (password !== passwordInput)
+    } while (PASSWORD !== passwordInput)
+}
+
+// =========================
+// 5. Leia um número N e exiba todos os números primos entre 2 e N usando laços aninhados (for dentro de for). Exiba também a quantidade total de primos encontrados.
+// =========================
+function ex5() {
+    
+    console.clear()
+
+    let number = Number(prompt(`Digite um número inteiro e positivo maior ou igual a 2: `))
+    let totalPrimeNumbers = 0
+
+    if (!Number.isInteger(number) || number < 2) {
+        console.log(`\n==========================================================================\n [ERRO] Digite somente números inteiros e positivos maiores ou iguais a 2\n==========================================================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex5()
+        }, 3000)
+    }
+
+    console.log(`\nNúmeros primos entre 2 e ${number}:\n`)
+
+    for (let i = 2; i <= number; i++) {
+        let divisors = 0
+
+        for (let j = 1; j <= i; j++) {
+            if (i % j === 0) {
+                divisors++
+            }
+        }
+
+        if (divisors == 2) {
+            console.log(`Número Primo: ${i}`)
+            totalPrimeNumbers++
+        }
+    }
+
+    console.log(`\nTotal de Números Primos: ${totalPrimeNumbers}`)
+    
+    menu()
+}
+
+// =========================
+// 6. Crie um array e leia via laço o nome e a nota de 5 alunos. Ao final, exiba: a média da turma, o nome do aluno com maior nota e o nome do aluno com menor nota. Não use funções prontas como Math.max().
+// =========================
+function ex6() {
+    
+    console.clear()
+
+    let arrayStudents = []
+    let classAverage = 0
+    let highestGrade
+    let lowestGrade
+
+    for (let i = 0; i < 5; i++) {
+        let name = prompt(`Digite o nome do aluno: `)
+        let grade = Number(prompt('Digite sua nota: '))
+
+        if (isNaN(grade) || grade < 0 || grade > 10) {
+            console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex6()
+            }, 3000)
+        }
+
+        arrayStudents.push([name, grade])
+
+        classAverage += grade
+
+        if (highestGrade == undefined || lowestGrade == undefined) {
+            highestGrade = arrayStudents[0]
+            lowestGrade = arrayStudents[0]
+        }
+
+        if (grade > highestGrade[1]) {
+            highestGrade = arrayStudents[i]
+        }
+
+        if (grade < lowestGrade[1]) {
+            lowestGrade = arrayStudents[i]
+        }
+    }
+
+    classAverage /= arrayStudents.length
+
+    console.log(`\nMédia da turma: ${classAverage.toFixed(2)}\nAluno com maior nota: ${highestGrade[0]}\nAluno com menor nota: ${lowestGrade[0]}`)
+
+    menu()
 }
