@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Tabuada\n 2 - Dígitos\n 3 - Fibonacci\n 4 - Senha\n 5 - Números Primos\n 6 - Notas\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Tabuada\n 2 - Dígitos\n 3 - Fibonacci\n 4 - Senha\n 5 - Números Primos\n 6 - Notas\n 7 - Carrinho de Compras\n 8 - Palavra Invertida\n 9 - xxx\n10 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -263,6 +263,98 @@ function ex6() {
     classAverage /= arrayStudents.length
 
     console.log(`\nMédia da turma: ${classAverage.toFixed(2)}\nAluno com maior nota: ${highestGrade[0]}\nAluno com menor nota: ${lowestGrade[0]}`)
+
+    menu()
+}
+
+// =========================
+// 7. Simule um carrinho de compras: leia nomes e preços de produtos em um laço até o usuário digitar "sair". Armazene em arrays. Ao final, liste todos os itens, exiba o subtotal, aplique 10% de desconto se houver mais de 3 itens e mostre o total a pagar.
+// =========================
+function ex7() {
+    
+    console.clear()
+    
+    let cartProducts = []
+    let product
+    let cartPrices = []
+    let price
+    let subtotal = 0
+    let total = 0
+    let discount = 0
+
+    do {
+        product = prompt('Digite o nome do produto: ').toUpperCase()
+
+        if (product === 'SAIR') break
+
+        price = Number(prompt('Digite o valor: R$ '))
+
+        if (!isNaN(product) || isNaN(price) || price < 0) {
+            console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex7()
+            }, 3000)
+        }
+       
+        cartProducts.push(product)
+        cartPrices.push(price)
+    
+    } while (product !== 'SAIR')
+    
+    console.log('\n')
+
+    cartProducts.forEach((product) => {
+        console.log(product)
+    })
+
+    cartPrices.forEach((price) => {
+        subtotal += price
+    })
+
+    if (cartProducts.length > 3) {
+        discount = subtotal * 0.1
+    }
+
+    total = subtotal - discount
+
+    console.log(`\n=====================\n SUBTOTAL: R$ ${subtotal.toFixed(2)}\n DESCONTO: R$ ${discount.toFixed(2)}\n TOTAL:    R$ ${total.toFixed(2)}\n=====================`)
+
+    menu()
+}
+
+// =========================
+// 8. Leia uma palavra, armazene seus caracteres em um array e, percorrendo-o de trás para frente com um laço for, monte a palavra invertida. Exiba a palavra original, a invertida e informe se ela é um palíndromo.
+// =========================
+function ex8() {
+    
+    console.clear()
+
+    const WORD = prompt('Digite uma palavra: ').toUpperCase()
+
+    if (!WORD) {
+        console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+        return setTimeout(() => {
+            console.clear()
+            ex8()
+        }, 3000)
+    }
+   
+    let chars = WORD.split('')
+    let reverseWord = ''
+
+    for (let i = chars.length - 1; i >= 0; i--) {
+        reverseWord += chars[i]
+    }
+
+    console.log(`\nPalavra original: ${WORD}`)
+    console.log(`Palavra invertida: ${reverseWord}`)
+
+    if (WORD === reverseWord) {
+        console.log('\nÉ um palíndromo!')
+    } else {
+        console.log('\nNão é um palíndromo!')
+    }
 
     menu()
 }
