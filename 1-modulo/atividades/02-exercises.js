@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Tabuada\n 2 - Dígitos\n 3 - Fibonacci\n 4 - Senha\n 5 - Números Primos\n 6 - Notas\n 7 - Carrinho de Compras\n 8 - Palavra Invertida\n 9 - xxx\n10 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Tabuada\n 2 - Dígitos\n 3 - Fibonacci\n 4 - Senha\n 5 - Números Primos\n 6 - Notas\n 7 - Carrinho de Compras\n 8 - Palavra Invertida\n 9 - Número Aleatório\n10 - Notas\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -355,6 +355,107 @@ function ex8() {
     } else {
         console.log('\nNão é um palíndromo!')
     }
+
+    menu()
+}
+
+// =========================
+// 9. Sorteie um número entre 1 e 100 com Math.random(). Usando um laço do...while, peça ao usuário para adivinhar; a cada tentativa, diga se o número é maior ou menor. Registre as tentativas em um array e, ao acertar, exiba o histórico e quantas tentativas foram necessárias.
+// =========================
+function ex9() {
+    
+    console.clear()
+
+    const secretNumber = Math.floor(Math.random() * 100) + 1
+    let guess
+    let attempts = []
+
+    do {
+
+        guess = Number(prompt('Adivinhe o número (1 a 100): '))
+
+        if (!Number.isInteger(guess) || guess < 1 || guess > 100) {
+            console.log(`\n=======================================\n [ERRO] Digite um número entre 1 e 100 \n=======================================`)
+            return setTimeout(() => {
+                console.clear()
+                ex9()
+            }, 3000)
+        }
+
+        attempts.push(guess)
+
+        if (guess < secretNumber) {
+            console.log('\nO número secreto é MAIOR')
+        } else if (guess > secretNumber) {
+            console.log('\nO número secreto é MENOR')
+        }
+
+    } while (guess !== secretNumber)
+
+    console.clear()
+
+    console.log(`\nAcertou o número ${secretNumber}!`)
+
+    console.log('\nHistórico de tentativas:')
+
+    attempts.forEach((attempt, index) => {
+        console.log(`${index + 1}ª tentativa: ${attempt}`)
+    })
+
+    console.log(`\nTotal de tentativas: ${attempts.length}`)
+    
+    menu()
+}
+
+// =========================
+// 10. Crie uma matriz 3×4 (3 alunos, 4 notas cada). Leia os valores via laços aninhados. Calcule e exiba a média de cada aluno, a média geral da turma e qual aluno teve o melhor desempenho.
+// =========================
+function ex10() {
+
+    console.clear()
+
+    let grades = []
+    let classTotal = 0
+    let bestStudent = 0
+    let bestAverage = 0
+
+    for (let i = 0; i < 3; i++) {
+        grades[i] = []
+
+        let studentTotal = 0
+
+        console.log(`\nAluno ${i + 1}`)
+
+        for (let j = 0; j < 4; j++) {
+            let grade = Number(
+                prompt(`Digite a ${j + 1}ª nota do aluno ${i + 1}: `)
+            )
+
+            if (isNaN(grade) || grade < 0 || grade > 10) {
+                console.log(`\n=======================================\n [ERRO] Digite somente valores válidos \n=======================================`)
+                return setTimeout(() => {
+                    console.clear()
+                    ex10()
+                }, 3000)
+            }
+
+            grades[i][j] = grade
+            studentTotal += grade
+            classTotal += grade
+        }
+
+        let studentAverage = studentTotal / 4
+        console.log(`Média do Aluno ${i + 1}: ${studentAverage.toFixed(2)}`)
+
+        if (i === 0 || studentAverage > bestAverage) {
+            bestAverage = studentAverage
+            bestStudent = i + 1
+        }
+    }
+
+    let classAverage = classTotal / 12
+
+    console.log(`\n============================\nMédia geral da turma: ${classAverage.toFixed(2)}\nMelhor desempenho: ${bestStudent} (Média ${bestAverage.toFixed(2)})\n============================`)
 
     menu()
 }
