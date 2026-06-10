@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Produto\n 2 - Personagens\n 3 - xxx\n 4 - xxx\n 5 - xxx\n 6 - xxx\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - xxx\n 6 - xxx\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -107,8 +107,8 @@ function ex2() {
     }
 
     console.log('PERSONAGEM A | PERSONAGEM B')
-    for (const p in characterA) {
-        console.log(`${p}: ${characterA[p]} | ${p}: ${characterB[p]}`)
+    for (const c in characterA) {
+        console.log(`${c}: ${characterA[c]} | ${c}: ${characterB[c]}`)
     }
     
     const totalPowerA = characterA.health + characterA.attack + characterA.defense
@@ -122,6 +122,91 @@ function ex2() {
         console.log(`${characterB.name} possui o maior poder total`)
     } else {
         console.log('Os personagens possuem o mesmo poder total')
+    }
+
+    menu()
+}
+
+// =========================
+// 3. Crie um objeto representando um funcionário com nome, cargo, salário e anos de experiência. Use for...in para listar todos os dados. Com base nos anos de experiência, calcule e exiba o bônus anual: até 2 anos = 5% do salário, de 3 a 5 anos = 10%, acima de 5 anos = 15%.
+// =========================
+function ex3() {
+    
+    console.clear()
+
+    const employee = {
+        name: 'Pedro',
+        role: 'Desenvolvedor',
+        wage: 5000,
+        experienceYears: 2
+    }
+
+    for (const e in employee) {
+        console.log(`${e}: ${employee[e]}`)
+    }
+
+    let bonusPercentage = 0
+
+    if (employee.experienceYears > 5) {
+        bonusPercentage = 15
+    } else if (employee.experienceYears >= 3) {
+        bonusPercentage = 10
+    } else {
+        bonusPercentage = 5
+    }
+
+    let bonusValue = employee.wage * (bonusPercentage / 100)
+    let total = employee.wage + bonusValue
+
+    console.log(`Bônus: ${bonusPercentage}% - R$ ${bonusValue}\nTotal: ${total}`)
+
+    menu()
+}
+
+// =========================
+// 4. Crie um objeto onde cada chave é o nome de um item e o valor é a quantidade no inventário do jogador (ex: { espada: 1, poção: 5, escudo: 2 }). Use for...in para listar o inventário completo. Permita que o usuário informe um item para usar: reduza a quantidade em 1 ou exiba "item esgotado" se for zero.
+// =========================
+function ex4() {
+    
+    console.clear()
+
+    const item = {
+        sword: 1,
+        potion: 5,
+        shield: 2,
+        arrow: 0
+    }
+
+    for (const i in item) {
+        console.log(`${i}: ${item[i]}`)
+    }
+
+    let itemChoice = prompt('Digite um item para usar: ')
+    let itemFound = false
+
+    for (const i in item) {
+        if (i === itemChoice) {
+            itemFound = true
+            if (item[i] > 0) {
+                item[i]--
+                console.log(`\n${i} utilizado\n${item[i]} restante(s)`)
+            } else {
+                console.log(`\n======================\n [ERRO] Item esgotado \n======================`)
+                return setTimeout(() => {
+                    console.clear()
+                    ex4()
+                }, 3000)
+            }
+            break
+        }
+    }
+
+    if (!itemFound) {
+        console.log(`\n============================\n [ERRO] Item não encontrado \n============================`)
+        return setTimeout(() => {
+            console.clear()
+            ex4()
+        }, 3000)
     }
 
     menu()
