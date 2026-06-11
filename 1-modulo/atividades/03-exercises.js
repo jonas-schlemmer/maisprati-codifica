@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - Notas\n 8 - Estoque\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - Notas\n 8 - Estoque\n 9 - Contato\n10 - Histórico\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -420,3 +420,94 @@ function ex8() {
     menu()
 }
 
+// =========================
+// 9. Crie um array de objetos onde cada objeto representa um contato com nome, telefone e e-mail. Use forEach para listar todos os contatos formatados. Permita buscar um contato pelo nome usando for...of e exiba os dados encontrados ou uma mensagem de "não encontrado".
+// =========================
+function ex9() {
+
+    console.clear()
+
+    const contacts = [
+        {
+            name: 'Pedro',
+            phone: '(51) 99999-1111',
+            email: 'pedro@email.com'
+        },
+        {
+            name: 'Maria',
+            phone: '(51) 99999-2222',
+            email: 'maria@email.com'
+        },
+        {
+            name: 'João',
+            phone: '(51) 99999-3333',
+            email: 'joao@email.com'
+        }
+    ]
+
+    console.log('CONTATOS:')
+
+    contacts.forEach(contact => {
+        console.log(`${contact.name} | ${contact.phone} | ${contact.email}`)
+    })
+
+    const nameSearch = prompt('Digite o nome do contato: ')
+
+    let found = false
+
+    for (const contact of contacts) {
+        if (contact.name === nameSearch) {
+            found = true
+            console.log(`\nCONTATO ENCONTRADO:\nNome: ${contact.name}\nTelefone: ${contact.phone}\nE-mail: ${contact.email}`)
+            break
+        }
+    }
+
+    if (!found) {
+        console.log(`\n===============================\n [ERRO] Contato não encontrado \n===============================`)
+        return setTimeout(() => {
+            console.clear()
+            ex9()
+        }, 3000)
+    }
+
+    menu()
+}
+
+// =========================
+// 10. Implemente uma pilha usando um array para simular o histórico de um navegador. Crie as funções visitar(pagina) (push), voltar() (pop) e paginaAtual() (peek). Simule uma sessão: visite 4 páginas, volte 2 vezes e exiba a página atual a cada operação.
+// =========================
+function ex10() {
+
+    console.clear()
+
+    const history = []
+
+    function visit(page) {
+        history.push(page)
+
+        console.log(`Visitando: ${page}`)
+        console.log(`Página atual: ${currentPage()}\n`)
+    }
+
+    function back() {
+        const removedPage = history.pop()
+
+        console.log(`Voltando da página: ${removedPage}`)
+        console.log(`Página atual: ${currentPage()}\n`)
+    }
+
+    function currentPage() {
+        return history[history.length - 1]
+    }
+
+    visit('google.com')
+    visit('youtube.com')
+    visit('github.com')
+    visit('stackoverflow.com')
+
+    back()
+    back()
+
+    menu()
+}
