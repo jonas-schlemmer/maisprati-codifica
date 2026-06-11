@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - xxx\n 6 - xxx\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -208,6 +208,112 @@ function ex4() {
             ex4()
         }, 3000)
     }
+
+    menu()
+}
+
+// =========================
+// 5. Crie um objeto representando o orçamento mensal de uma pessoa, com categorias como alimentação, transporte, lazer e saúde, cada uma com valor planejado e valor gasto. Use for...in para percorrer as categorias e exibir se cada uma ficou dentro ou acima do orçamento, e calcule o saldo geral do mês.
+// =========================
+function ex5() {
+
+    console.clear()
+
+    const budget = {
+        food: {
+            planned: 800,
+            spent: 750
+        },
+        transport: {
+            planned: 300,
+            spent: 350
+        },
+        leisure: {
+            planned: 500,
+            spent: 400
+        },
+        health: {
+            planned: 200,
+            spent: 250
+        }
+    }
+
+    let totalPlanned = 0
+    let totalSpent = 0
+
+    for (const b in budget) {
+
+        const planned = budget[b].planned
+        const spent = budget[b].spent
+
+        totalPlanned += planned
+        totalSpent += spent
+
+        console.log(`${b}: Planejado R$ ${planned} | Gasto R$ ${spent}`)
+
+        if (spent <= planned) {
+            console.log(`${b}: Planejado R$ ${planned} | Gasto R$ ${spent} | Dentro do orçamento`)
+        } else {
+            console.log(`${b}: Planejado R$ ${planned} | Gasto R$ ${spent} | Acima do orçamento`)
+        }
+    }
+
+    const balance = totalPlanned - totalSpent
+
+    console.log(`\nTotal planejado: R$ ${totalPlanned}`)
+    console.log(`Total gasto: R$ ${totalSpent}`)
+    console.log(`Saldo do mês: R$ ${balance}`)
+
+    menu()
+}
+
+// =========================
+// 6. Crie um array de objetos representando músicas, cada uma com título, artista e duração em segundos. Use for...of para exibir cada música no formato "Artista —Título (mm:ss)". Ao final, use forEach para somar a duração total e exiba-a no mesmo formato.
+// =========================
+function ex6() {
+
+    console.clear()
+
+    const songs = [
+        {
+            title: 'Numb',
+            artist: 'Linkin Park',
+            duration: 185
+        },
+        {
+            title: 'Believer',
+            artist: 'Imagine Dragons',
+            duration: 204
+        },
+        {
+            title: 'The Scientist',
+            artist: 'Coldplay',
+            duration: 309
+        }
+    ]
+
+    for (const song of songs) {
+
+        const minutes = Math.floor(song.duration / 60)
+        const seconds = song.duration % 60
+
+        const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+
+        console.log(`${song.artist} — ${song.title} (${formattedTime})`)
+    }
+
+    let totalDuration = 0
+
+    songs.forEach(song => {
+        totalDuration += song.duration
+    })
+
+    const totalMinutes = Math.floor(totalDuration / 60)
+    const totalSeconds = totalDuration % 60
+
+    const totalFormatted = `${String(totalMinutes).padStart(2, '0')}:${String(totalSeconds).padStart(2, '0')}`
+
+    console.log(`\nDuração total: ${totalFormatted}`)
 
     menu()
 }
