@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - Notas\n 8 - Estoque\n 9 - Contato\n10 - Histórico\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - Notas\n 8 - Estoque\n 9 - Contato\n10 - Histórico\n11 - Clínica\n12 - Lista\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -508,6 +508,137 @@ function ex10() {
 
     back()
     back()
+
+    menu()
+}
+
+// =========================
+// 11. Implemente uma fila usando um array para simular o atendimento de uma clínica. Crie as funções chegarPaciente(nome) (enqueue), chamarProximo() (dequeue) e exibirFila(). Simule a chegada de 5 pacientes e o atendimento de 3, exibindo o estado da fila a cada operação.
+// =========================
+function ex11() {
+
+    console.clear()
+
+    const queue = []
+
+    function arrivePatient(name) {
+
+        queue.push(name)
+
+        console.log(`Paciente chegou: ${name}`)
+        displayQueue()
+    }
+
+    function callNext() {
+
+        const patient = queue.shift()
+
+        console.log(`Paciente chamado: ${patient}`)
+        displayQueue()
+    }
+
+    function displayQueue() {
+
+        console.log('Fila:')
+
+        queue.forEach(patient => {
+            console.log(patient)
+        })
+
+        console.log('')
+    }
+
+    arrivePatient('Pedro')
+    arrivePatient('Maria')
+    arrivePatient('João')
+    arrivePatient('Ana')
+    arrivePatient('Lucas')
+
+    callNext()
+    callNext()
+    callNext()
+
+    menu()
+}
+
+// =========================
+// 12. Implemente uma lista ligada simples usando nós ({ valor, proximo }). Crie as funções adicionar(tarefa), remover(tarefa) e exibir() que percorre todos os nós. Simule um gerenciador de tarefas: adicione 4 tarefas, remova uma pelo nome e exiba a lista antes e depois.
+// =========================
+function ex12() {
+
+    console.clear()
+
+    let head = null
+
+    function add(task) {
+        const newNode = {
+            value: task,
+            next: null
+        }
+
+        if (head === null) {
+            head = newNode
+            return
+        }
+
+        let current = head
+
+        while (current.next !== null) {
+            current = current.next
+        }
+
+        current.next = newNode
+    }
+
+    function remove(task) {
+        if (head === null) {
+            return
+        }
+
+        if (head.value === task) {
+            head = head.next
+            return
+        }
+
+        let current = head
+
+        while (current.next !== null) {
+
+            if (current.next.value === task) {
+                current.next = current.next.next
+                return
+            }
+
+            current = current.next
+        }
+    }
+
+    function display() {
+
+        let current = head
+
+        console.log('TAREFAS:')
+
+        while (current !== null) {
+            console.log(current.value)
+            current = current.next
+        }
+
+        console.log('')
+    }
+
+    add('Estudar JavaScript')
+    add('Fazer exercícios')
+    add('Ler documentação')
+    add('Enviar atividade')
+
+    console.log('ANTES DA REMOÇÃO')
+    display()
+
+    remove('Ler documentação')
+
+    console.log('DEPOIS DA REMOÇÃO')
+    display()
 
     menu()
 }
