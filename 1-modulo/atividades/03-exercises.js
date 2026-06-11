@@ -15,7 +15,7 @@ function main() {
     console.clear()
 
     // Exibe o menu de opções
-    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - xxx\n 8 - xxx\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
+    console.log(` 1 - Produto\n 2 - Personagens\n 3 - Funcionário\n 4 - Inventário\n 5 - Orçamento\n 6 - Músicas\n 7 - Notas\n 8 - Estoque\n 9 - xxx\n10 - xxx\n11 - xxx\n12 - xxx\n\n 0 - ENCERRAR PROGRAMA\n======================\n`)
     
     let option = Number(prompt(`Digite sua escolha: `))
     switch (option) {
@@ -317,3 +317,106 @@ function ex6() {
 
     menu()
 }
+
+// =========================
+// 7. Crie um array de objetos com nome e nota de 6 alunos. Use for...of para classificar cada aluno (Aprovado, Recuperação ou Reprovado) e exibir o resultado. Use forEach para calcular e exibir separadamente a média dos aprovados e a média dos reprovados.
+// =========================
+function ex7() {
+
+    console.clear()
+
+    const students = [
+        { name: 'João', grade: 8 },
+        { name: 'Maria', grade: 4 },
+        { name: 'Pedro', grade: 6 },
+        { name: 'Ana', grade: 9 },
+        { name: 'Lucas', grade: 3 },
+        { name: 'Sara', grade: 7 }
+    ]
+
+    for (const student of students) {
+
+        if (student.grade >= 7) {
+            console.log(`${student.name}: Aprovado`)
+        } else if (student.grade >= 5) {
+            console.log(`${student.name}: Recuperação`)
+        } else {
+            console.log(`${student.name}: Reprovado`)
+        }
+
+    }
+
+    let approvedTotal = 0
+    let approvedCount = 0
+
+    let failedTotal = 0
+    let failedCount = 0
+
+    students.forEach(student => {
+
+        if (student.grade >= 7) {
+            approvedTotal += student.grade
+            approvedCount++
+        }
+
+        if (student.grade < 5) {
+            failedTotal += student.grade
+            failedCount++
+        }
+
+    })
+
+    const approvedAverage = approvedCount > 0 ? approvedTotal / approvedCount : 0
+
+    const failedAverage = failedCount > 0 ? failedTotal / failedCount : 0
+
+    console.log(`\nMédia dos aprovados: ${approvedAverage.toFixed(2)}\nMédia dos reprovados: ${failedAverage.toFixed(2)}`)
+
+    menu()
+}
+
+// =========================
+// 8. Crie um array de objetos representando produtos com nome, preço e quantidade. Use forEach para calcular o valor total em estoque de cada produto (preço × quantidade) e exibir um relatório. Ao final, exiba o valor total geral de todo o estoque.
+// =========================
+function ex8() {
+
+    console.clear()
+
+    const products = [
+        {
+            name: 'Notebook',
+            price: 3500,
+            quantity: 3
+        },
+        {
+            name: 'Mouse',
+            price: 80,
+            quantity: 10
+        },
+        {
+            name: 'Teclado',
+            price: 150,
+            quantity: 5
+        },
+        {
+            name: 'Monitor',
+            price: 900,
+            quantity: 2
+        }
+    ]
+
+    let totalStockValue = 0
+
+    products.forEach(product => {
+        const stockValue = product.price * product.quantity
+
+        totalStockValue += stockValue
+
+        console.log(`${product.name} | Preço: R$ ${product.price} | Quantidade: ${product.quantity} | Total: R$ ${stockValue}`)
+    })
+
+    console.log(`\nValor total do estoque: R$ ${totalStockValue}`)
+
+    menu()
+}
+
