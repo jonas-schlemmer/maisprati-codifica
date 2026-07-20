@@ -22,8 +22,8 @@ body {
 }
 
 header {
-    background: #2563EB;
-    color: #FFFFFF;
+    color: #2563EB;
+    background: #FFFFFF;
     position: sticky;
     top: 0;
     z-index: 999999;
@@ -48,7 +48,7 @@ nav {
 }
 
 nav a {
-    color: #FFFFFF;
+    color: #2563EB;
     text-decoration: none;
     transition: .3s;
     font-weight: 500;
