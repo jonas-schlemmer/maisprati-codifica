@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeStart Academy</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -54,4 +55,22 @@
             </div>
         </div>
     </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Faça sua inscrição</h2>
+            <form id="form-contact">
+                <input type="text" placeholder="Nome" required>
+                <input type="text" placeholder="E-mail" required>
+                <input type="text" id="cep" placeholder="CEP" maxlength="9" required>
+                <input type="text" id="street" placeholder="Rua" readonly>
+                <input type="text" id="city" placeholder="Cidade" readonly>
+                <input type="text" id="state" placeholder="Estado" readonly>
+                <textarea rows="5" placeholder="Mensagem" required></textarea>
+                <button type="submit">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>© 2026 CodeStart Academy<br>Desenvolvido por Jonas Schlemmer.</p>
+    </footer>
 </html>
