@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: cursive;
+            font-size: 2rem;
+        }
+
+        #form-login {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        input {
+            margin-bottom: 20px;
+            width: 200px;
+            height: 50px;
+        }
+
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 2rem;
+            border-radius: 50px;
+        }
+
+        .rodape-form {
+            color: red;
+            margin-top: 225px;
+        }
+    </style>
+</head>
+<body>
+    <main class="principal">
+        <form id="form-login" class="formulario">
+            <h1>Entrar</h1>
+            
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" required>
+
+            <p id="aviso"></p>
+
+            <button type="submit" class="btn">Entrar</button>
+            
+            <p class="rodape-form">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+
+        </form>
+    </main>
+    <script type="module" src="login.js"></script>
+</body>
+</html>
