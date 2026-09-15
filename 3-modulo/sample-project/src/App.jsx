@@ -9,9 +9,9 @@ export default function App() { // Tem que ser o mesmo nome do componente, com 1
   const [ contador, setContador ] = useState(0) // Como se fosse um vigia, em mudança de valor, o React redesenha a tela, tendo seu valor inicial como zero.
   
   const [tarefas, setTarefas] = useState([
-    {id: 1, texto: "Aprender sobre Props", concluida: true},
-    {id: 2, texto: "Entender useState", concluida: true},
-    {id: 3, texto: "Estudar Web Components", concluida: false}
+    {id: 1, texto: "Aprender sobre Props", status: true},
+    {id: 2, texto: "Entender useState", status: true},
+    {id: 3, texto: "Estudar Web Components", status: false}
   ])
 
   return (
@@ -31,7 +31,7 @@ export default function App() { // Tem que ser o mesmo nome do componente, com 1
 
       <ul>
         {tarefas.map((tarefa) => (
-          <li>{tarefa.id}: {tarefa.texto} - {tarefa.concluida}</li>
+          <li>#{tarefa.id}: {tarefa.texto} - {tarefa.status ? 'Concluída' : <b>Pendente</b>}</li>
         ))}
       </ul>
       
