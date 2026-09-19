@@ -1,0 +1,9 @@
+:root {
+    --tinta: #111111;
+    --papel: #F7F4EC;
+    --urgente: #B3001B;
+    --cinza-legenda: #5D5A52;
+
+    --fonte-manchete: Georgia, 'Times New Roman', serif;
+    --fonte-ui: Arial, Helvetica, sans-serif;
+}
