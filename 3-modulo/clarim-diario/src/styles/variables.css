@@ -7,3 +7,10 @@
     --fonte-manchete: Georgia, 'Times New Roman', serif;
     --fonte-ui: Arial, Helvetica, sans-serif;
 }
+
+[data-theme="dark"] {
+    --tinta: #E8D4D8;
+    --papel: #191817;
+    --urgente: #FF5468;
+    --cinza-legenda: #A5A196;
+}
