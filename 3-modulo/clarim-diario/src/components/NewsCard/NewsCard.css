@@ -1,5 +1,5 @@
 .card {
-    background-color: var(--papel);
+    background: var(--papel-card);
     border: 1px solid var(--tinta);
     padding: 18px;
 }
@@ -15,13 +15,18 @@
 
 .card__titulo {
     font-size: 19px;
-    line-height: 1.5;
+    line-height: 1.25;
     margin: 8px 0 6px;
 }
 
 .card__titulo a {
-    color: inherit;
+    color: inherit;            
     text-decoration: none;
+}
+
+.card__titulo a:hover {
+    color: var(--urgente);
+    text-decoration: underline;
 }
 
 .card__resumo {
