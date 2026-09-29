@@ -6,10 +6,10 @@
 | # | Módulo | Status |
 |---|--------|--------|
 | 00 | **Preparatório** — Operações Básicas, Condições, Loops, Arrays e Funções | Finalizado
-| 01 | **JavaScript** — DS&A, estruturas de dados, ordenação | Em andamento |
-| 02 | **Desenvolvimento Web: Frontend Essencial e Controle de Versão** — HTML, CSS, Git | Em andamento |
-| 03 | **Desenvolvimento Web com React** — componentes, hooks, roteamento | Em breve |
-| 04 | **Fundamentos de Programação em Java e Introdução ao Ecossistema Spring** | Em breve |
+| 01 | **JavaScript** — DS&A, estruturas de dados, ordenação | Finalizado |
+| 02 | **Desenvolvimento Web: Frontend Essencial e Controle de Versão** — HTML, CSS, Git | Finalizado |
+| 03 | **Desenvolvimento Web com React** — componentes, hooks, roteamento | Finalizado |
+| 04 | **Fundamentos de Programação em Java e Introdução ao Ecossistema Spring** | Em andamento |
 | 05 | **Desenvolvimento Backend com Spring Framework e Bancos de Dados Relacionais** | Em breve |
 | 06 | **DevOps Básico e Introdução à Inteligência Artificial com Python** — Docker, AWS, Python, IA | Em breve |
 
@@ -18,6 +18,7 @@
 - CSS3;
 - JavaScript;
 - Node.js;
+- React;
 
 ## 👤 Autores
 [Jonas Schlemmer](https://github.com/jonas-schlemmer)

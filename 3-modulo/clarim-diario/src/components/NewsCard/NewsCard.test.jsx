@@ -13,4 +13,14 @@ describe('NewsCard', () => {
         expect(screen.getByText('Cidade')).toBeInTheDocument()
         expect(screen.getByText('Metrô terá horário extendido')).toBeInTheDocument()
     })
+
+    it('Não mostra parágrafo de resumo quando a prop não vem', () => {
+        render(
+            <MemoryRouter>
+                <NewsCard id={2} categoria="Esportes" titulo="Knicks vencem" />
+            </MemoryRouter>
+        )
+
+        expect(screen.queryByText(/Madison/)).not.toBeInTheDocument()
+    })
 })
